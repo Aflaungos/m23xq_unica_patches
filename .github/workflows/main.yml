@@ -1,0 +1,55 @@
+name: Build Folder
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+      actions: write
+    steps:
+ 
+    # You might want to Checkout your repo first, but not mandatory
+    - name: Check Out
+      uses: actions/checkout@v4
+
+    - name: Create A14_1 Zip Archive
+      run: |
+       git clone https://github.com/Aflaungos/m23xq_unica_patches -b main m23xq_unica_patches
+       cd $GITHUB_WORKSPACE/A14_1HM
+       zip -r m23xq.zip . -x "overlay*" -x "patches*" -x "config.sh" -x "sff.sh" -x "debloat.sh"
+
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          m23xq_unica_patches/m23xq.zip
+        name: M23 UN1CA Patches
+        tag_name: ${{ github.run_id }}
+        body: |
+          Device: Samsung Galaxy M23/F23 5G
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        token: ${{ github.token }}
+        repository: ${{ github.repository }}
+        retain_days: 0
+        keep_minimum_runs: 0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Delete older releases
+      uses: dev-drprasad/delete-older-releases@v0.2.1
+      with:
+        keep_latest: 1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
