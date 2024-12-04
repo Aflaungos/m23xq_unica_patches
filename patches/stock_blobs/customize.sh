@@ -92,13 +92,11 @@ ADD_TO_WORK_DIR "odm" "etc/media_profiles_V1_0.xml" 0 0 644 "u:object_r:vendor_c
 
 echo "Fix Google Assistant"
 rm -rf "$WORK_DIR/product/priv-app/HotwordEnrollmentOKGoogleEx4HEXAGON"
-cp -a --preserve=all "$FW_DIR/${MODEL}_${REGION}/product/priv-app/HotwordEnrollmentOKGoogleEx3HEXAGON" "$WORK_DIR/product/priv-app"
 rm -rf "$WORK_DIR/product/priv-app/HotwordEnrollmentXGoogleEx4HEXAGON"
-cp -a --preserve=all "$FW_DIR/${MODEL}_${REGION}/product/priv-app/HotwordEnrollmentXGoogleEx3HEXAGON" "$WORK_DIR/product/priv-app"
-sed -i "s/HotwordEnrollmentXGoogleEx4HEXAGON/HotwordEnrollmentXGoogleEx3HEXAGON/g" "$WORK_DIR/configs/file_context-product"
-sed -i "s/HotwordEnrollmentXGoogleEx4HEXAGON/HotwordEnrollmentXGoogleEx3HEXAGON/g" "$WORK_DIR/configs/fs_config-product"
-sed -i "s/HotwordEnrollmentOKGoogleEx4HEXAGON/HotwordEnrollmentOKGoogleEx3HEXAGON/g" "$WORK_DIR/configs/file_context-product"
-sed -i "s/HotwordEnrollmentOKGoogleEx4HEXAGON/HotwordEnrollmentOKGoogleEx3HEXAGON/g" "$WORK_DIR/configs/fs_config-product"
+sed -i "/HotwordEnrollmentXGoogleEx4HEXAGON/d" "$WORK_DIR/configs/file_context-product"
+sed -i "/HotwordEnrollmentXGoogleEx4HEXAGON/d" "$WORK_DIR/configs/fs_config-product"
+sed -i "/HotwordEnrollmentOKGoogleEx4HEXAGON/d" "$WORK_DIR/configs/file_context-product"
+sed -i "/HotwordEnrollmentOKGoogleEx4HEXAGON/d" "$WORK_DIR/configs/fs_config-product"
 
 echo "Add stock FM Radio app"
 ADD_TO_WORK_DIR "system" "system/etc/permissions/privapp-permissions-com.sec.android.app.fm.xml" \
@@ -127,12 +125,14 @@ ADD_TO_WORK_DIR "system" "system/apex/com.samsung.android.shell.apex" 0 0 644 "u
 echo "Add stock rscmgr.rc"
 ADD_TO_WORK_DIR "system" "system/etc/init/rscmgr.rc" 0 0 644 "u:object_r:system_file:s0"
 
+echo "Remove some system permissions"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.cover.clearcameraviewcover.xml"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.cover.flip.xml"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.pocketsensitivitymode_level1.xml"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.sensorhub_level29.xml"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.wirelesscharger_authentication.xml"
-echo "Add stock system features"
+
+echo "Add stock system permissions"
 ADD_TO_WORK_DIR "system" "system/etc/permissions/com.sec.feature.cover.minisviewwalletcover.xml" 0 0 644 "u:object_r:system_file:s0"
 ADD_TO_WORK_DIR "system" "system/etc/permissions/com.sec.feature.sensorhub_level40.xml" 0 0 644 "u:object_r:system_file:s0"
 
@@ -144,6 +144,7 @@ REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/lib64/libsecuibc.so"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/lib64/libstagefright_hdcp.so"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/lib64/vendor.samsung.hardware.security.hdcp.wifidisplay-V2-ndk.so"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/lib64/wfd_log.so"
+
 echo "Add stock WFD blobs"
 ADD_TO_WORK_DIR "system" "system/bin/insthk" 0 2000 755 "u:object_r:insthk_exec:s0"
 ADD_TO_WORK_DIR "system" "system/bin/remotedisplay" 0 2000 755 "u:object_r:remotedisplay_exec:s0"
@@ -169,12 +170,6 @@ echo "Add stock libhwui"
 ADD_TO_WORK_DIR "system" "system/lib/libhwui.so" 0 0 644 "u:object_r:system_lib_file:s0"
 ADD_TO_WORK_DIR "system" "system/lib64/libhwui.so" 0 0 644 "u:object_r:system_lib_file:s0"
 
-echo "Add HIDL fingerprint biometrics libs"
-ADD_TO_WORK_DIR "system" "system/lib/android.hardware.biometrics.fingerprint@2.1.so" 0 0 644 "u:object_r:system_lib_file:s0"
-ADD_TO_WORK_DIR "system" "system/lib/vendor.samsung.hardware.biometrics.fingerprint@3.0.so" 0 0 644 "u:object_r:system_lib_file:s0"
-ADD_TO_WORK_DIR "system" "system/lib64/android.hardware.biometrics.fingerprint@2.1.so" 0 0 644 "u:object_r:system_lib_file:s0"
-ADD_TO_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.biometrics.fingerprint@3.0.so" 0 0 644 "u:object_r:system_lib_file:s0"
-
 echo "Add HIDL face biometrics libs"
 ADD_TO_WORK_DIR "system" "system/lib/android.hardware.biometrics.face@1.0.so" 0 0 644 "u:object_r:system_lib_file:s0"
 ADD_TO_WORK_DIR "system" "system/lib/vendor.samsung.hardware.biometrics.face@2.0.so" 0 0 644 "u:object_r:system_lib_file:s0"
@@ -188,6 +183,7 @@ REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/lib/vendor.samsung.hardware.keymin
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/lib64/android.hardware.security.keymint-V2-ndk.so"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/lib64/libdk_native_keymint.so"
 REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/lib64/vendor.samsung.hardware.keymint-V2-ndk.so"
+
 echo "Add stock keymaster libs"
 ADD_TO_WORK_DIR "system" "system/lib/android.hardware.keymaster@3.0.so" 0 0 644 "u:object_r:system_lib_file:s0"
 ADD_TO_WORK_DIR "system" "system/lib/android.hardware.keymaster@4.0.so" 0 0 644 "u:object_r:system_lib_file:s0"
