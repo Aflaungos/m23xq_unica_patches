@@ -1,5 +1,5 @@
 ![1000019785](https://github.com/Aflaungos/m23xq_unica_patches/blob/main/m23xq_unica_patches_logo.jpg)
-# M23XQ UN1CA Patches
+# UN1CA Patches
 For Samsung Galaxy M23/F23 5G (m23xq/f23xq)
 ## ⚙️ Usage
 1. Clone [UN1CA](https://github.com/salvogiangri/UN1CA) repository:
