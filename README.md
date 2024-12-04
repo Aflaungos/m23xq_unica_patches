@@ -1,2 +1,4 @@
-# m23xq_unica_patches
-m23xq unica patches repo
+# M23XQ UN1CA Patches
+## Usage
+1. Clone repo in Unica 'target' folder
+2. Build
