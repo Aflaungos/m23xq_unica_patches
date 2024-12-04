@@ -19,10 +19,10 @@ jobs:
     - name: Check Out
       uses: actions/checkout@v4
 
-    - name: Create A14_1 Zip Archive
+    - name: Build Folder
       run: |
        git clone https://github.com/Aflaungos/m23xq_unica_patches -b main m23xq_unica_patches
-       cd $GITHUB_WORKSPACE/A14_1HM
+       cd $GITHUB_WORKSPACE/m23xq_unica_patches
        zip -r m23xq.zip . -x "overlay*" -x "patches*" -x "config.sh" -x "sff.sh" -x "debloat.sh"
 
     - name: Upload to Release
