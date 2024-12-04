@@ -20,4 +20,5 @@ For Samsung Galaxy M23/F23 5G (m23xq/f23xq)
 ## ❔ Troubleshooting
 1. Any submodule related issue? Reset all submodules and update them:
 > git submodule foreach --recursive git reset --hard (**This is a single command**)
+
 > git submodule update --recursive
