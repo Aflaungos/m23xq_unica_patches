@@ -23,7 +23,7 @@ jobs:
       run: |
        git clone https://github.com/Aflaungos/m23xq_unica_patches -b main m23xq_unica_patches
        cd $GITHUB_WORKSPACE/m23xq_unica_patches
-       zip -r m23xq.zip . -x "overlay*" -x "patches*" -x "config.sh" -x "sff.sh" -x "debloat.sh"
+       zip -r m23xq.zip . -x ".git*" -x ".github*" -x "m23xq_unica_patches_logo.jpg" -x "README.md"
 
     - name: Upload to Release
       uses: softprops/action-gh-release@v2
