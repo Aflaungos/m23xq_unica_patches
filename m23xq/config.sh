@@ -14,12 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 # Device configuration file for Galaxy M23 5G (m23xq)
 TARGET_NAME="Galaxy M23 5G"
 TARGET_CODENAME="m23xq"
 TARGET_FIRMWARE="SM-M236B/ZTO/350262401234564"
-TARGET_EXTRA_FIRMWARES=()
+#TARGET_EXTRA_FIRMWARES=()
 TARGET_API_LEVEL=34
 TARGET_PRODUCT_FIRST_API_LEVEL=31
 TARGET_VNDK_VERSION=30
