@@ -1,0 +1,31 @@
+From a1ba43300aa9c16e8ac7835207f667b6c26e5091 Mon Sep 17 00:00:00 2001
+From: Aflaungos <vimavick@gmail.com>
+Date: Fri, 6 Dec 2024 11:52:20 -0300
+Subject: [PATCH] Fix WindowManagerService smali
+
+---
+ .../system/framework/services.jar/WindowManagerService.smali  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/m23xq/patches/smali-fix/smali/system/framework/services.jar/WindowManagerService.smali b/m23xq/patches/smali-fix/smali/system/framework/services.jar/WindowManagerService.smali
+index 65b8cdf..35add4c 100644
+--- a/m23xq/patches/smali-fix/smali/system/framework/services.jar/WindowManagerService.smali
++++ b/m23xq/patches/smali-fix/smali/system/framework/services.jar/WindowManagerService.smali
+@@ -20077,7 +20077,7 @@
+ 
+     goto :goto_0
+ 
+-    :cond_0
++    :cond_1
+     invoke-virtual {p0, p2}, Lcom/android/server/wm/DisplayContent;->screenshotDisplayLocked(Z)Landroid/graphics/Bitmap;
+ 
+     move-result-object p0
+@@ -20115,7 +20115,7 @@
+ 
+     throw p0
+ 
+-    :cond_1
++    :cond_2
+     new-instance p0, Ljava/lang/SecurityException;
+ 
+     const-string p1, "Requires READ_FRAME_BUFFER permission"

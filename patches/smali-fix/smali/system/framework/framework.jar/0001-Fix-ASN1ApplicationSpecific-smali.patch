@@ -1,0 +1,22 @@
+From a1ba43300aa9c16e8ac7835207f667b6c26e5091 Mon Sep 17 00:00:00 2001
+From: Aflaungos <vimavick@gmail.com>
+Date: Fri, 6 Dec 2024 11:52:20 -0300
+Subject: [PATCH] Fix ASN1ApplicationSpecific smali
+
+---
+ .../framework/services.jar/ASN1ApplicationSpecific.smali      | 3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/m23xq/patches/smali-fix/smali/system/framework/services.jar/ASN1ApplicationSpecific.smali b/m23xq/patches/smali-fix/smali/system/framework/services.jar/ASN1ApplicationSpecific.smali
+index 86a55d0..3fa1a6b 100644
+--- a/m23xq/patches/smali-fix/smali/system/framework/services.jar/ASN1ApplicationSpecific.smali
++++ b/m23xq/patches/smali-fix/smali/system/framework/services.jar/ASN1ApplicationSpecific.smali
+@@ -14,6 +14,9 @@
+ # direct methods
+ .method constructor blacklist <init>(ZI[B)V
+     .locals 1
++    .param p1, "isConstructed"    # Z
++    .param p2, "tag"    # I
++    .param p3, "octets"    # [B
+ 
+     invoke-direct {p0}, Lcom/android/internal/org/bouncycastle/asn1/ASN1Primitive;-><init>()V
