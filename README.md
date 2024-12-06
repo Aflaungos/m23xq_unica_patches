@@ -1,5 +1,5 @@
 ![1000019785](https://github.com/Aflaungos/m23xq_unica_patches/blob/main/m23xq_unica_patches_logo.jpg)
-# M23XQ UN1CA Patches
+# UN1CA Patches
 For Samsung Galaxy M23/F23 5G (m23xq/f23xq)
 ## ⚙️ Usage
 1. Clone [UN1CA](https://github.com/salvogiangri/UN1CA) repository:
@@ -20,4 +20,5 @@ For Samsung Galaxy M23/F23 5G (m23xq/f23xq)
 ## ❔ Troubleshooting
 1. Any submodule related issue? Reset all submodules and update them:
 > git submodule foreach --recursive git reset --hard (**This is a single command**)
+
 > git submodule update --recursive
