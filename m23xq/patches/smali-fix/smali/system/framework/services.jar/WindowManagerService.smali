@@ -20077,7 +20077,7 @@
 
     goto :goto_0
 
-    :cond_0
+    :cond_1
     invoke-virtual {p0, p2}, Lcom/android/server/wm/DisplayContent;->screenshotDisplayLocked(Z)Landroid/graphics/Bitmap;
 
     move-result-object p0
@@ -20115,7 +20115,7 @@
 
     throw p0
 
-    :cond_1
+    :cond_2
     new-instance p0, Ljava/lang/SecurityException;
 
     const-string p1, "Requires READ_FRAME_BUFFER permission"

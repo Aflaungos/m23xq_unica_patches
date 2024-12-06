@@ -14,6 +14,9 @@
 # direct methods
 .method constructor blacklist <init>(ZI[B)V
     .locals 1
+    .param p1, "isConstructed"    # Z
+    .param p2, "tag"    # I
+    .param p3, "octets"    # [B
 
     invoke-direct {p0}, Lcom/android/internal/org/bouncycastle/asn1/ASN1Primitive;-><init>()V
 
