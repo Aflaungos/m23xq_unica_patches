@@ -717,11 +717,11 @@
 
     check-cast v1, Ljava/lang/String;
 
-    if-nez v1, :cond_1
+    if-nez v1, :cond_2
 
     return v0
 
-    :cond_1
+    :cond_2
     :try_start_0
     invoke-static {v1}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
